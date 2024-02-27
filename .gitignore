@@ -2,5 +2,4 @@ node_modules/
 dev-data/
 *.env
 .parcel_cache
-dist/
-.cache
+.cache/
