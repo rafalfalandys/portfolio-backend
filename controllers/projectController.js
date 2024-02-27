@@ -2,14 +2,10 @@ const Project = require('../models/projectModel');
 const APIFeatures = require('../utils/apiFeatures');
 
 exports.getAllProjects = async (req, res) => {
-  console.log('getting projects');
   try {
     const features = new APIFeatures(Project.find(), req.query).filter().sort().limitFields().paginate();
 
-    console.log('features', features);
     const projects = await features.query;
-
-    console.log('projects', projects);
 
     res.status(200).json({
       status: 'success',
