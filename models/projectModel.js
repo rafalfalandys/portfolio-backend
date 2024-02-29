@@ -70,15 +70,6 @@ projectSchema.pre('save', function (next) {
   next();
 });
 
-// projectSchema.post('save', (doc, next) => {
-//   console.log(doc);
-//   next();
-// });
-
-// projectSchema.pre('find', function (next) {
-//   next();
-// });
-
 const Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;
