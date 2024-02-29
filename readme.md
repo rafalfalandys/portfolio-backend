@@ -5,7 +5,7 @@ run: npm run dev
 
 ## Prologue
 
-This project is a backend for my portfolio app built in React. To help myself maintaining the website, I built a CRUD edit panel there and firstly made it talk to Firebase, and after some time I decided to build a dedicated backend.
+This project is a backend for my portfolio app built in React (https://github.com/rafalfalandys/portfolio). To help myself maintaining the website, I built a CRUD edit panel there and firstly made it talk to Firebase, and after some time I decided to build a dedicated backend.
 It has 2 paths - projects and photos. Each path reads, creates, patches and deletes data stored in MongoDB.
 All is deployed to heroku.com
 
