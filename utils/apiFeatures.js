@@ -31,7 +31,7 @@ class APIFeatures {
       this.query = this.query.select(fields);
     } else {
       // excluding fields
-      this.query = this.query.select('-__v -tags');
+      this.query = this.query.select('-__v');
     }
 
     return this;
@@ -39,7 +39,7 @@ class APIFeatures {
 
   paginate() {
     const page = +this.queryString.page || 1;
-    const limit = +this.queryString.limit || 50;
+    const limit = +this.queryString.limit || 200;
     const skip = (page - 1) * limit;
 
     this.query = this.query.skip(skip).limit(limit);

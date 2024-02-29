@@ -5,7 +5,7 @@ const app = express();
 const morgan = require('morgan');
 
 const projectRouter = require('./routes/projectRoutes');
-const userRouter = require('./routes/userRoutes');
+const photoRouter = require('./routes/photoRoutes');
 
 // Middlewares
 if (process.env.NODE_ENV === 'development') {
@@ -23,6 +23,6 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/v1/projects', projectRouter);
-app.use('/api/v1/users', userRouter);
+app.use('/api/v1/photos', photoRouter);
 
 module.exports = app;
