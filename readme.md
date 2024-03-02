@@ -19,12 +19,19 @@ For all GET endpoints, available queries are: sort, limit, page, and fields. All
 # Photos:
 
 type Photo = {
+
 name: string;
+
 thumbnail: string; // default = url
+
 type: 'img' | 'video' | 'youtube';
+
 url: string;
+
 order: number;
+
 \_id?: string;
+
 };
 
 GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/
@@ -45,19 +52,33 @@ Deletes photo.
 # Projects:
 
 type Project {
+
 title: string;
+
 tytul: string;
+
 description: string;
+
 opis: string;
+
 location: string;
+
 order: number;
+
 images: Photo[];
+
 role: string[];
+
 tags: string[];
+
 yearStart: number;
+
 yearEnd: number;
+
 id: string;
+
 \_id: string;
+
 }
 
 GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/
