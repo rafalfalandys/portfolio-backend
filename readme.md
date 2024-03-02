@@ -16,7 +16,7 @@ NodeJS | MongoDB | Express | Mongoose |
 
 For all GET endpoints, available queries are: sort, limit, page, and fields. All MongoDB filters are available
 
-# Photos:
+### Photos:
 
 type Photo = {  
 name: string;  
@@ -42,7 +42,7 @@ Updates photo.
 DELETE: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/:id
 Deletes photo.
 
-# Projects:
+### Projects:
 
 type Project {  
 title: string;  
