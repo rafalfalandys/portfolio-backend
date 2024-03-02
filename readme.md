@@ -12,14 +12,69 @@ All is deployed to heroku.com
 Features and stack:
 NodeJS | MongoDB | Express | Mongoose |
 
-## Photos:
+## Endpoints:
 
-The photo object contains name, URL, and type (the photo could be a video or link to YouTube too in this case). It also has a thumbnail but not required.
+For all GET endpoints, available queries are: sort, limit, page, and fields. All MongoDB filters are available
 
-## Projects:
+# Photos:
 
-The project object contains basic info about stuff I did as an architect. Titles, descriptions etc. All in 2 languages - PL and EN.
+type Photo = {
+name: string;
+thumbnail: string; // default = url
+type: 'img' | 'video' | 'youtube';
+url: string;
+order: number;
+\_id?: string;
+};
 
-## Afterword
+GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/
+Retrieves all photos Data.
+
+POST: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/
+Creates new photo.
+
+GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/:id
+Retrieve single photo data.
+
+PATCH: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/:id
+Updates photo.
+
+DELETE: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/:id
+Deletes photo.
+
+# Projects:
+
+type Project {
+title: string;
+tytul: string;
+description: string;
+opis: string;
+location: string;
+order: number;
+images: Photo[];
+role: string[];
+tags: string[];
+yearStart: number;
+yearEnd: number;
+id: string;
+\_id: string;
+}
+
+GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/
+Retrieves all projects Data.
+
+POST: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/
+Creates new project.
+
+GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/:id
+Retrieve single project data.
+
+PATCH: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/:id
+Updates project.
+
+DELETE: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/:id
+Deletes project.
+
+# Afterword
 
 This is the first backend I built, and I have not implemented all the features yet. First in a line is to write it all in typescript (there is not much code, so I want to switch to TS quickly), and then - authentication.
