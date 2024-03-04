@@ -1,66 +1,55 @@
 const Project = require('../models/projectModel');
 const APIFeatures = require('../utils/apiFeatures');
+const AppError = require('../utils/appError');
+const catchAsync = require('../utils/catchAsync');
 
-exports.getAllProjects = async (req, res) => {
-  try {
-    const features = new APIFeatures(Project.find(), req.query).filter().sort().limitFields().paginate();
+exports.getAllProjects = catchAsync(async (req, res, next) => {
+  const features = new APIFeatures(Project.find(), req.query).filter().sort().limitFields().paginate();
 
-    const projects = await features.query;
+  const projects = await features.query;
 
-    res.status(200).json({
-      status: 'success',
-      results: projects.length,
-      data: { projects },
-    });
-  } catch (error) {
-    res.status(404).json({ status: 'fail', message: error });
-  }
-};
+  res.status(200).json({
+    status: 'success',
+    results: projects.length,
+    data: { projects },
+  });
+});
 
-exports.getProject = async (req, res) => {
-  try {
-    // Project.findOne({ _id: req.params.id })
-    const project = await Project.findById(req.params.id);
-    res.status(200).json({ status: 'success', data: { project } });
-  } catch (error) {
-    res.status(404).json({ status: 'fail', message: error });
-  }
-};
+exports.getProject = catchAsync(async (req, res, next) => {
+  // Project.findOne({ _id: req.params.id })
+  const project = await Project.findById(req.params.id);
 
-exports.createProject = async (req, res) => {
-  try {
-    const newProject = await Project.create(req.body);
+  if (!project) return next(new AppError(404, 'No project found with that ID.'));
 
-    res.status(201).json({
-      status: 'success',
-      data: {
-        project: JSON.parse(JSON.stringify(newProject)),
-      },
-    });
-  } catch (error) {
-    res.status(400).json({ status: 'fail', message: error });
-  }
-};
+  res.status(200).json({ status: 'success', data: { project } });
+});
 
-exports.updateProject = async (req, res) => {
-  try {
-    const project = await Project.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+exports.createProject = catchAsync(async (req, res, next) => {
+  const newProject = await Project.create(req.body);
 
-    res.status(200).json({ status: 'success', data: { project } });
-  } catch (error) {
-    res.status(400).json({ status: 'fail', message: error });
-  }
-};
+  res.status(201).json({
+    status: 'success',
+    data: {
+      project: JSON.parse(JSON.stringify(newProject)),
+    },
+  });
+});
 
-exports.deleteProject = async (req, res) => {
-  try {
-    await Project.findByIdAndDelete(req.params.id);
+exports.updateProject = catchAsync(async (req, res, next) => {
+  const project = await Project.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
 
-    res.status(204).json({ status: 'success', data: null });
-  } catch (error) {
-    res.status(400).json({ status: 'fail', message: error });
-  }
-};
+  if (!project) return next(new AppError(404, 'No project found with that ID.'));
+
+  res.status(200).json({ status: 'success', data: { project } });
+});
+
+exports.deleteProject = catchAsync(async (req, res, next) => {
+  const project = await Project.findByIdAndDelete(req.params.id);
+
+  if (!project) return next(new AppError(404, 'No project found with that ID.'));
+
+  res.status(204).json({ status: 'success', data: null });
+});

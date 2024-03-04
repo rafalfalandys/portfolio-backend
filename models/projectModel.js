@@ -47,7 +47,7 @@ const projectSchema = new mongoose.Schema({
         type: String,
         enum: {
           values: ['designer', 'student', 'coordinator', ''],
-          message: 'role is "designer", "student" or "coordnator"',
+          message: 'role is "designer", "student" or "coordinator"',
         },
       },
     ],
