@@ -7,7 +7,7 @@ run: npm run dev
 
 This project is a backend for my portfolio app built in React (https://github.com/rafalfalandys/portfolio). To help myself maintaining the website, I built a CRUD edit panel there and firstly made it talk to Firebase, and after some time I decided to build a dedicated backend.
 It has 2 paths - projects and photos. Each path reads, creates, patches and deletes data stored in MongoDB.
-All is deployed to heroku.com
+All is deployed to Amazon Web Services
 
 Features and stack:
 NodeJS | MongoDB | Express | Mongoose |
@@ -27,19 +27,19 @@ type Photo = {
  \_id?: string;  
 };
 
-GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/
+GET: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/photos/
 Retrieves all photos Data.
 
-POST: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/
+POST: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/photos/
 Creates new photo.
 
-GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/:id
+GET: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/photos/:id
 Retrieve single photo data.
 
-PATCH: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/:id
+PATCH: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/photos/:id
 Updates photo.
 
-DELETE: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/photos/:id
+DELETE: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/photos/:id
 Deletes photo.
 
 ### Projects:
@@ -60,19 +60,19 @@ type Project {
  \_id: string;  
 }
 
-GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/
+GET: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/projects/
 Retrieves all projects Data.
 
-POST: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/
+POST: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/projects/
 Creates new project.
 
-GET: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/:id
+GET: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/projects/:id
 Retrieve single project data.
 
-PATCH: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/:id
+PATCH: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/projects/:id
 Updates project.
 
-DELETE: https://protected-chamber-04342-341ed7575df7.herokuapp.com/api/v1/projects/:id
+DELETE: http://portfolio-rafal.eu-north-1.elasticbeanstalk.com/api/v1/projects/:id
 Deletes project.
 
 # Afterword
